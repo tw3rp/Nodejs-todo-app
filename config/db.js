@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var models= require('../models/userlist');
 //another module to make interactons with the db like collection, relationsal style
 //var Schema   = mongoose.Schema;
 var conn = mongoose.connection; //opens the connection

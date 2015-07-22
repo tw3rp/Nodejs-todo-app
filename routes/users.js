@@ -23,13 +23,24 @@ var router = express.Router();
 var User = require('../models/userlist');
 var person= {email:'rahuldprabhu@gmail.com'};
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  	new User(
-	person
-	).save(function(err,todo,count){
-	res.redirect('/')});
+router.get('/', function(req, res) {
+  	User.find(function(err,todos,count){
+	if(err) res.send(err); 
+	res.render('todos',{title:'Express todo',todos :todos});});
 });
 //	res.send("this is users");
+
+
+router.get('/create',function(req,res){
+	new User({email: req.body.content}).save(function(err, todo,count){
+            if(err) res.render('error', { error: 'Error creating your todo :('})
+	});
+	res.send(User);
+	});
+
+
+
+
 
 
 module.exports = router;

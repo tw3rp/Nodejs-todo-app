@@ -21,6 +21,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 var router= require('./config/routes.js');
 var db = require('./config/db.js');
 //var creat= require('./routes/users.js');

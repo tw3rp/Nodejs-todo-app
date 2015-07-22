@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	h1= title
+	p Welcome to #{title}
+	a(href='/todos').btn.btn-success.btn-lg View all todos
+	.panel.panel-default
+		for todo in todos
+			.panel-body
+				p #{todo.email} 
+	form(role='form', method='post', action='/create')
+		.form-group
+			label(for='email') Email Address:
+			input.form-control(type='email',placeholder='whats your email', id='email', name='email')
+		button.btn.btn-default(type='submit') Submit
+
