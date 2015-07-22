@@ -1,5 +1,5 @@
 var mongoose= require('mongoose'),
-    User = mongoose.model('User');
+    User = require('../models/userlist');
 var express= require('express');
 var router=express.Router();
 
@@ -16,12 +16,19 @@ router.post('/create', function(req, res){
 		
 		var email1=req.body.email;
 		User.create({email:email1},function(err, todo){
-		//console.log(req.body.email);
+		console.log(req.body.email);
 		if(err) console.log("I am wrong");
 		res.redirect('/all');
 		});
 	});
-//router.get('/edit/:id', function(req,res){
+router.get('/delete/:id', function(req,res){
+		var id=req.params.id;
+		User.findByIdAndRemove(id,function(err,todo){
+	//	console.log(id);
+			if(err) console.log("I am wrong");
+			res.redirect('/all');
+		});
+	});
 module.exports = router;
 /*module.exports = {
 	all: function(req, res){
