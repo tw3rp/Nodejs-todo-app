@@ -3,8 +3,8 @@ Schema= mongoose.Schema;
 
 var UserSchema= Schema(
 	{
-		firstname:{type: String, required: true},
-		lastname: {type: String, required:true},
+//		firstname:{type: String, required: true},
+//		lastname: {type: String, required:true},
 		email:	  {type:String,  required:true},
 	//	content: String,
 	//	completed: { type:Boolean, default: false},

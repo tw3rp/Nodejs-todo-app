@@ -2,15 +2,19 @@ extends layout
 
 block content
 	h1= title
-	p Welcome to #{title}
-	a(href='/todos').btn.btn-success.btn-lg View all todos
+	p Welcome to your to do list
+	a(href='/all').btn.btn-success.btn-lg View all todos
 	.panel.panel-default
 		for todo in todos
 			.panel-body
-				p #{todo.email} 
+				form(role='form', method='get', action='/delete/#{todo._id}')
+					.form-group
+						label(for='email') To do:
+						input.btn.btn-danger.pull-right(type='submit', value='#{todo.email}') 
+	
 	form(role='form', method='post', action='/create')
 		.form-group
-			label(for='email') Email Address:
-			input.form-control(type='email',placeholder='whats your email', id='email', name='email')
+			label(for='text') To Do:
+			input.form-control(type='text',placeholder='What do you have to do?', id='email', name='email')
 		button.btn.btn-default(type='submit') Submit
 
